@@ -1,10 +1,6 @@
 import CategoryDropdown from './CategoryDropdown';
-import styled from 'styled-components';
 import {useState} from 'react';
-
-const CategoryTitle = styled.h3`
-    padding: 10px 50px 10px 0px;
-`
+import './Category.css';
 
 const Category = ({category}) => {
     const name = Object.keys(category)[0];
@@ -14,12 +10,11 @@ const Category = ({category}) => {
 
     return(
         <>
-            <CategoryTitle 
-                style={{textDecoration: hover ? 'underline' : 'none'}}
+            <h3 
                 onMouseEnter={() => setHover(true)} 
                 onMouseLeave={() => setHover(false)}>
                 {title}
-            </CategoryTitle>
+            </h3>
             {hover && <CategoryDropdown category={category} name={name}/>}
         </>
     )

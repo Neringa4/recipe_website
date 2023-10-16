@@ -1,0 +1,7 @@
+h3 {
+    padding: 10px 50px 10px 0px;
+}
+
+h3:hover {
+    text-decoration: underline;
+}

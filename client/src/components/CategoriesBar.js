@@ -1,13 +1,5 @@
 import Category from "./Category";
-import styled from 'styled-components';
-
-const List = styled.ul`
-    list-style-type: none;
-    display: flex;
-    justify-content: flex-start;
-    padding: 0px 25%;
-    background-color: #D8D9DA;
-`
+import './CategoryBar.css'
 
 const CategoriesBar = ({categories}) => {
     const categoryNodes = categories.map((category, index) => {
@@ -19,9 +11,9 @@ const CategoriesBar = ({categories}) => {
     })
 
     return(
-        <List>
+        <ul className="category-bar">
             {categoryNodes}
-        </List>
+        </ul>
     )
 }
 
