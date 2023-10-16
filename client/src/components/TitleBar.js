@@ -4,7 +4,6 @@ const Title = styled.h1`
     background-color: #61677A;
     color: white;
     font: Roboto;
-    margin: 0px;
     padding: 25px 25%;
 `
 

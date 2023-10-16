@@ -5,7 +5,7 @@ const List = styled.ul`
     list-style-type: none;
     display: flex;
     justify-content: flex-start;
-    padding: 10px 25%;
+    padding: 0px 25%;
     background-color: #D8D9DA;
 `
 
