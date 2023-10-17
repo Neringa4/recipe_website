@@ -15,7 +15,7 @@ const Category = ({category}) => {
                 onMouseLeave={() => setHover(false)}>
                 {title}
             </h3>
-            {hover && <CategoryDropdown category={category} name={name}/>}
+            <CategoryDropdown category={category} name={name}/>
         </>
     )
 }
