@@ -1,8 +1,7 @@
 h3 {
-    padding: 10px 50px 10px 0px;
+    padding: 10px 60px 10px 0px;
 }
 
 h3:hover {
     color: #61677A;
-    cursor: pointer;
 }

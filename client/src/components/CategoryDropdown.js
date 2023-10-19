@@ -1,10 +1,10 @@
 import './CategoryDropdown.css';
 
 const CategoryDropdown = ({category, name}) => {
-    const dropdownList = category[name].map(value => {
+    const dropdownList = category[name].map((value, index) => {
         return(
-            <li>
-                {value}
+            <li key={index}>
+                {value.displayTitle}
             </li>
         )
     })

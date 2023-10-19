@@ -4,3 +4,7 @@ h1 {
     font: Roboto;
     padding: 25px 25%;
 }
+
+#title-link {
+    text-decoration: none;
+}
