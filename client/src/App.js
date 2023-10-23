@@ -2,9 +2,11 @@ import "./App.css"
 import Header from "./containers/Header";
 import MainPage from "./containers/MainPage";
 import RecipePage from "./containers/RecipePage";
+import CategoryPage from "./containers/CategoryPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import categories from './categories.js';
+import {app_key, app_id} from './keys.js';
 
 function App() {
   // const [categories, setCategories] = useState([
@@ -35,12 +37,26 @@ function App() {
   //   })
   // }, [])
 
+  const [recipes, setRecipes] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('')
+
+  const fetchCategories = (urlExt) => {
+    fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${app_id}&app_key=${app_key}${urlExt}`)
+    .then(res => res.json())
+    .then(data => console.log(data.hits))
+  }
+
+  const selectCategory = (category) => {
+    setSelectedCategory(category)
+  }
+
   return (
     <BrowserRouter>
-      <Header categories={categories}/>
+      <Header categories={categories} fetchCategories={fetchCategories} selectCategory={selectCategory}/>
       <Routes>
         <Route path="/" element={<MainPage/>}></Route>
         <Route path="/recipes/:label" element={<RecipePage/>}></Route>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory}/>}></Route>
       </Routes>
     </BrowserRouter>
   );

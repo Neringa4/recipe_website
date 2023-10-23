@@ -1,0 +1,9 @@
+.dropdown-link {
+    text-decoration: none;
+    color: black;
+    opacity: 90%;
+}
+
+.dropdown-link:hover {
+    color: #61677A;
+}

@@ -1,11 +1,11 @@
 import Category from "./Category";
 import './CategoryBar.css'
 
-const CategoriesBar = ({categories}) => {
+const CategoriesBar = ({categories, fetchCategories, selectCategory}) => {
     const categoryNodes = categories.map((category, index) => {
         return(
             <li key={index}>
-                <Category category={category}/>
+                <Category category={category} fetchCategories={fetchCategories} selectCategory={selectCategory}/>
             </li>
         )
     })
