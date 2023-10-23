@@ -10,13 +10,13 @@ const categories = [
     },
     {
         Dishes: [
-            {displayTitle: 'Biscuits and cookies', url: '&dishType=Biscuits and cookies'},
+            {displayTitle: 'Biscuits and Cookies', url: '&dishType=Biscuits and cookies'},
             {displayTitle: 'Bread', url: '&dishType=Bread'},
             {displayTitle: 'Cereals', url: '&dishType=Cereals'},
-            {displayTitle: 'Condiments and sauces', url: '&dishType=Condiments and sauces'},
+            {displayTitle: 'Condiments and Sauces', url: '&dishType=Condiments and sauces'},
             {displayTitle: 'Desserts', url: '&dishType=Desserts'},
             {displayTitle: 'Drinks', url: '&dishType=Drinks'},
-            {displayTitle: 'Main course', url: '&dishType=Main course'},
+            {displayTitle: 'Main Course', url: '&dishType=Main course'},
             {displayTitle: 'Pancake', url: '&dishType=Pancake'},
             {displayTitle: 'Preps', url: '&dishType=Preps'},
             {displayTitle: 'Preserve', url: '&dishType=Preserve'},
