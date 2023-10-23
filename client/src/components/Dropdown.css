@@ -3,6 +3,7 @@
     width: auto;
     position: absolute;
     display: none;
+    background-color: white;
 }
 
 .dropdown li {
@@ -15,5 +16,4 @@
     padding-left: 10px;
     border-left: 2px solid #61677A;
     transition: all 0.3s ease;
-    color: #61677A;
 }
