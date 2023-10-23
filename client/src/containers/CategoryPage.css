@@ -1,0 +1,8 @@
+.category-title {
+    text-align: center;
+}
+
+.recipe-cards-list-container {
+    display: flex;
+    justify-content: center;
+}

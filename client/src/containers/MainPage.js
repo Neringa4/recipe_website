@@ -4,8 +4,6 @@ import RecipeCardsList from "../components/RecipeCardsList";
 const MainPage = () => {
     return(
         <>
-            <MostPopularRecipeCard/>
-            <RecipeCardsList/>
         </>
     )
 }

@@ -4,7 +4,7 @@ import MainPage from "./containers/MainPage";
 import RecipePage from "./containers/RecipePage";
 import CategoryPage from "./containers/CategoryPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import categories from './categories.js';
 import {app_key, app_id} from './keys.js';
 
@@ -43,7 +43,7 @@ function App() {
   const fetchCategories = (urlExt) => {
     fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${app_id}&app_key=${app_key}${urlExt}`)
     .then(res => res.json())
-    .then(data => console.log(data.hits))
+    .then(data => setRecipes(data.hits))
   }
 
   const selectCategory = (category) => {

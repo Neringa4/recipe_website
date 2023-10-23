@@ -1,5 +1,5 @@
 import Category from "./Category";
-import './CategoryBar.css'
+import './CategoriesBar.css'
 
 const CategoriesBar = ({categories, fetchCategories, selectCategory}) => {
     const categoryNodes = categories.map((category, index) => {

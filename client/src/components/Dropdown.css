@@ -4,6 +4,7 @@
     position: absolute;
     display: none;
     background-color: white;
+    padding: 0 0 0 40px;
 }
 
 .dropdown li {
