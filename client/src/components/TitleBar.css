@@ -1,10 +1,10 @@
-h1 {
+#header-title {
     background-color: #61677A;
     color: white;
     font: Roboto;
     padding: 25px 25%;
 }
 
-#title-link {
+#header-title-link {
     text-decoration: none;
 }

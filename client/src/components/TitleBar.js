@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 const TitleBar = () => {
     return(
-        <Link to="/" id="title-link">
-            <h1>Recipes</h1>
+        <Link to="/" id="header-title-link">
+            <h1 id="header-title">Recipes</h1>
         </Link>
     )
 }
