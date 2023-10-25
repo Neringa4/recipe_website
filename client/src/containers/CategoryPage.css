@@ -1,8 +1,14 @@
+.category-page {
+    background-color: whitesmoke;
+}
+
 .category-title {
     text-align: center;
+    padding: 50px 0;
 }
 
 .recipe-cards-list-container {
     display: flex;
     justify-content: center;
+    padding-bottom: 50px;
 }

@@ -1,7 +1,7 @@
 .recipe-cards-list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 200px);
+    grid-template-columns: repeat(4, 225px);
     column-gap: 25px;
     row-gap: 15px;
 }

@@ -2,7 +2,7 @@
     list-style-type: none;
     display: flex;
     justify-content: flex-start;
-    width: 875px;
+    width: 975px;
 }
 
 .category-bar li:hover .dropdown {
