@@ -37,13 +37,25 @@ function App() {
   //   })
   // }, [])
 
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState({
+    from: 0,
+    to: 0,
+    count: 0,
+    _links: {},
+    hits: []
+  });
   const [selectedCategory, setSelectedCategory] = useState('')
 
-  const fetchCategories = (urlExt) => {
-    fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${app_id}&app_key=${app_key}${urlExt}`)
-    .then(res => res.json())
-    .then(data => setRecipes(data.hits))
+  const fetchRecipes = (urlExt, url) => {
+    if (url) {
+      fetch(url)
+      .then(res => res.json())
+      .then(res => setRecipes(res))
+    } else {
+      fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${app_id}&app_key=${app_key}${urlExt}`)
+      .then(res => res.json())
+      .then(res => setRecipes(res))
+    }
   }
 
   const selectCategory = (category) => {
@@ -52,11 +64,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header categories={categories} fetchCategories={fetchCategories} selectCategory={selectCategory}/>
+      <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
       <Routes>
         <Route path="/" element={<MainPage/>}></Route>
         <Route path="/recipes/:label" element={<RecipePage/>}></Route>
-        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory}/>}></Route>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} fetchRecipes={fetchRecipes}/>}></Route>
       </Routes>
     </BrowserRouter>
   );

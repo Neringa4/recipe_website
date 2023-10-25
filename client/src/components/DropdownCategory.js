@@ -1,12 +1,11 @@
 import './DropdownCategory.css';
 import {Link} from 'react-router-dom';
 
-const DropdownCategory = ({category, fetchCategories, selectCategory}) => {
+const DropdownCategory = ({category, fetchRecipes, selectCategory}) => {
 
     const handleOnClick = () => {
-        const url = category.url
-        selectCategory(category.displayTitle)
-        fetchCategories(url)
+        selectCategory(category.displayTitle);
+        fetchRecipes(category.url, '');
     }
     return(
         <Link to={`/categories/${category.displayTitle}`} className="dropdown-link">
