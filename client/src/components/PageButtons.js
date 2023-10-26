@@ -1,12 +1,20 @@
-import {Link} from 'react-router-dom';
 import './PageButtons.css';
 
-const PageButtons = ({recipes, fetchRecipes}) => {
+const PageButtons = ({recipes, setRecipes}) => {
+    const handleClick = () => {
+        fetch(recipes._links.next.href)
+        .then(res => res.json())
+        .then(data => {
+            const recipesCopy = {...recipes}
+            recipesCopy.hits.push(...data.hits)
+            recipesCopy._links.next.href = data._links.next.href
+            setRecipes(recipesCopy)
+        })
+    }
 
     return(
         <div className="buttons-container">
-            <a className="previous">&laquo; Previous</a>
-            <a href="#" className="next" onClick={() => fetchRecipes('', recipes._links.next.href)}>Next &raquo;</a>
+            <a className="load-more" onClick={handleClick}>Load More</a>
         </div>
     )
 }

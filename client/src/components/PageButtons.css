@@ -1,7 +1,7 @@
 .buttons-container {
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 
 .buttons-container a {
@@ -16,12 +16,7 @@
     cursor: pointer;
   }
   
-  .previous {
-    background-color: #f1f1f1;
-    color: black;
-  }
-  
-  .next {
+  .load-more {
     background-color: #61677A;
     color: white;
   }
