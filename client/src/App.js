@@ -66,9 +66,9 @@ function App() {
     <BrowserRouter>
       <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
       <Routes>
-        <Route path="/" element={<MainPage/>}></Route>
-        <Route path="/recipes/:label" element={<RecipePage/>}></Route>
-        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes}/>}></Route>
+        <Route path="/" element={<MainPage/>}/>
+        <Route path="/recipes/:label" element={<RecipePage/>}/>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes}/>}/>
       </Routes>
     </BrowserRouter>
   );

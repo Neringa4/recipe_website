@@ -6,7 +6,7 @@ const Header = ({categories, fetchRecipes, selectCategory}) => {
     return(
         <>
             <div id="title-bar">
-                <TitleBar/>
+                <TitleBar fetchRecipes={fetchRecipes}/>
             </div>
             <div id="categories-bar">
                 <CategoriesBar categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
