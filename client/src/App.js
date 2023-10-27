@@ -3,6 +3,7 @@ import Header from "./containers/Header";
 import MainPage from "./containers/MainPage";
 import RecipePage from "./containers/RecipePage";
 import CategoryPage from "./containers/CategoryPage";
+import ResultsPage from "./containers/ResultsPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useState} from 'react';
 import categories from './categories.js';
@@ -69,6 +70,7 @@ function App() {
         <Route path="/" element={<MainPage/>}/>
         <Route path="/recipes/:label" element={<RecipePage/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes}/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 import {useState} from 'react';
 
@@ -10,10 +10,13 @@ const SearchBar = ({fetchRecipes}) => {
         setSearchInput(e.target.value)
     }
 
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const urlExt = `&q=${searchInput}`;
         fetchRecipes(urlExt, '');
+        navigate(`/search/${searchInput}`)
         setSearchInput('')
     }
 

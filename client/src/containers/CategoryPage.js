@@ -4,7 +4,7 @@ import './CategoryPage.css';
 
 const CategoryPage = ({recipes, selectedCategory, setRecipes}) => {
     return(
-    <div className="category-page">
+    <div className="page">
         <h1 className="category-title">{selectedCategory} Recipes</h1>
         <div className="recipe-cards-list-container">
             <RecipeCardsList recipes={recipes.hits}/>
