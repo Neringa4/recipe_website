@@ -1,5 +1,6 @@
 .page {
     background-color: whitesmoke;
+    min-height: 920px;
 }
 
 .category-title {

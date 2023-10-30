@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={<MainPage/>}/>
         <Route path="/recipes/:label" element={<RecipePage/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes}/>}/>
-        <Route path="/search/:input" element={<ResultsPage recipes={recipes}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes}/>}/>
       </Routes>
     </BrowserRouter>
   );

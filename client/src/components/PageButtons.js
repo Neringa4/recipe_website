@@ -7,14 +7,18 @@ const PageButtons = ({recipes, setRecipes}) => {
         .then(data => {
             const recipesCopy = {...recipes}
             recipesCopy.hits.push(...data.hits)
-            recipesCopy._links.next.href = data._links.next.href
+            if (Object.keys(data._links).length > 0) {
+                recipesCopy._links.next.href = data._links.next.href
+            } else {
+                recipesCopy._links = {}
+            }
             setRecipes(recipesCopy)
         })
     }
 
     return(
         <div className="buttons-container">
-            <a className="load-more" onClick={handleClick}>Load More</a>
+            {Object.keys(recipes._links).length > 0 ? <a className="load-more" onClick={handleClick}>Load More</a> : ''}
         </div>
     )
 }
