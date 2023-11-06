@@ -1,10 +1,10 @@
 import RecipeCard from "./RecipeCard";
 import './RecipeCardsList.css';
 
-const RecipeCardsList = ({recipes}) => {
+const RecipeCardsList = ({recipes, selectRecipe}) => {
     const recipeList = recipes.map((recipe, index) => {
         return(
-            <li key={index}><RecipeCard recipe={recipe.recipe}/></li>
+            <li key={index}><RecipeCard recipe={recipe.recipe} selectRecipe={selectRecipe}/></li>
         )
     })
     return(

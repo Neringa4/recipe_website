@@ -45,7 +45,8 @@ function App() {
     _links: {},
     hits: []
   });
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedRecipe, setSelectedRecipe] = useState({});
 
   const fetchRecipes = (urlExt, url) => {
     if (url) {
@@ -60,7 +61,11 @@ function App() {
   }
 
   const selectCategory = (category) => {
-    setSelectedCategory(category)
+    setSelectedCategory(category);
+  }
+
+  const selectRecipe = (recipe) => {
+    setSelectedRecipe(recipe);
   }
 
   return (
@@ -68,9 +73,9 @@ function App() {
       <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
       <Routes>
         <Route path="/" element={<MainPage/>}/>
-        <Route path="/recipes/:label" element={<RecipePage/>}/>
-        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes}/>}/>
-        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes}/>}/>
+        <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
       </Routes>
     </BrowserRouter>
   );
