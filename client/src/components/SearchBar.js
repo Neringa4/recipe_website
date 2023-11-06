@@ -14,15 +14,17 @@ const SearchBar = ({fetchRecipes}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const urlExt = `&q=${searchInput}`;
-        fetchRecipes(urlExt, '');
-        navigate(`/search/${searchInput}`)
-        setSearchInput('')
+        if (searchInput) {
+            const urlExt = `&q=${searchInput}`;
+            fetchRecipes(urlExt, '');
+            navigate(`/search/${searchInput}`)
+            setSearchInput('')
+        }
     }
 
     return(
         <form action="" className="search-bar" onSubmit={handleSubmit}>
-	        <input type="search" name="search" pattern=".*\S.*" required value={searchInput} onChange={handleInput}/>
+	        <input type="search" name="search" pattern=".*\S.*" autocomplete="off" value={searchInput} onChange={handleInput}/>
 	        <button className="search-btn" type="submit"><i className="fa fa-search"></i></button>
         </form>
     )
