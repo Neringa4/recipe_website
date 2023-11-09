@@ -1,7 +1,6 @@
 #title-bar {
     display: flex;
     justify-content: center;
-    gap: 495px;
     background-color: #61677A;
 }
 

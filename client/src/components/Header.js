@@ -1,5 +1,5 @@
-import TitleBar from "../components/TitleBar";
-import CategoriesBar from "../components/CategoriesBar";
+import TitleBar from "./TitleBar";
+import CategoriesBar from "./CategoriesBar";
 import './Header.css';
 
 const Header = ({categories, fetchRecipes, selectCategory}) => {
