@@ -1,0 +1,47 @@
+.recipe-details-card {
+    margin: 25px 0;
+    box-shadow: 2px 5px 7px -6px #ccc;
+    border-radius: 4px;
+    background-color: white;
+    width: 895px;
+    display: grid;
+    grid-auto-columns: 150px;
+    grid-auto-rows: 300px;
+    gap: 15px;
+    padding: 40px;
+}
+
+.recipe-details-card ul {
+    list-style: none;
+}
+
+.recipe-details-card img {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    height: 300px;
+    width: 300px;
+}
+
+.recipe-details {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+}
+
+.label-method-container {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+}
+
+.ingredient-container {
+    grid-column: 1/ span 2;
+    grid-row: 2;
+}
+
+.nutrition-container {
+    display: flex;
+}
+
+.health-labels {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,8 +1,13 @@
 import RecipeDetailsCard from "../components/RecipeDetailsCard";
+import './RecipePage.css';
 
 const RecipePage = ({recipe}) => {
     return(
-        <RecipeDetailsCard recipe={recipe}/>
+        <div className="page">
+            <div className="recipe-details-container">
+                <RecipeDetailsCard recipe={recipe}/>
+            </div>
+        </div>
     )
 }
 

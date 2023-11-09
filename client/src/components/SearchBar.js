@@ -24,7 +24,7 @@ const SearchBar = ({fetchRecipes}) => {
 
     return(
         <form action="" className="search-bar" onSubmit={handleSubmit}>
-	        <input type="search" name="search" pattern=".*\S.*" autocomplete="off" value={searchInput} onChange={handleInput}/>
+	        <input type="search" name="search" pattern=".*\S.*" autoComplete="off" value={searchInput} onChange={handleInput}/>
 	        <button className="search-btn" type="submit"><i className="fa fa-search"></i></button>
         </form>
     )
