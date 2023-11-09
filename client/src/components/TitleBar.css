@@ -1,12 +1,33 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 975px;
+}
+
 #header-title {
     color: white;
     font: Roboto;
     padding: 15px 0;
-    display: flex;
-    justify-content: flex-start;
 }
 
 #header-title-link {
     text-decoration: none;
     width: 250px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#advanced-search-link {
+    text-decoration: none;
+    color: white;
+}
+
+.divider {
+    display: inline-block;
+    border-left: 1px solid white;
+    margin: 0 10px;
+    height: 17px
 }
