@@ -1,9 +1,10 @@
 import "./App.css"
-import Header from "./containers/Header";
+import Header from "./components/Header.js";
 import MainPage from "./containers/MainPage";
 import RecipePage from "./containers/RecipePage";
 import CategoryPage from "./containers/CategoryPage";
 import ResultsPage from "./containers/ResultsPage";
+import AdvancedSearchPage from "./containers/AdvancedSearchPage.js";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useState} from 'react';
 import categories from './categories.js';
@@ -76,6 +77,7 @@ function App() {
         <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
         <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
+        <Route path="/advanced-search" element={<AdvancedSearchPage/>}/>
       </Routes>
     </BrowserRouter>
   );
