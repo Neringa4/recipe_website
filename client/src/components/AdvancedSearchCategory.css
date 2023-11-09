@@ -1,0 +1,27 @@
+.category-name {
+    margin: 25px 0px;
+}
+
+.label-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 25px;
+}
+
+.label {
+    list-style: none;
+    background-color: #ddd;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 3px;
+}
+
+.selected-label {
+    list-style: none;
+    background-color: #61677A;
+    color: white;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 3px;
+}

@@ -1,0 +1,18 @@
+#adv-srch-page {
+    display: flex;
+    justify-content: center;
+}
+
+.adv-srch-cat-container {
+    list-style: none;
+    width: 975px;
+}
+
+.adv-srch-cat-container hr {
+    opacity: 30%;
+}
+
+.adv-srch-form > input {
+    display: block;
+    margin: 60px auto;
+}

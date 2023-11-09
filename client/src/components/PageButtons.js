@@ -18,7 +18,7 @@ const PageButtons = ({recipes, setRecipes}) => {
 
     return(
         <div className="buttons-container">
-            {'next' in recipes._links ? <button className="load-more" onClick={handleClick}>Load More</button> : ''}
+            {'next' in recipes._links ? <button className="button" onClick={handleClick}>Load More</button> : ''}
         </div>
     )
 }

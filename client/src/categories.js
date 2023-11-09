@@ -61,7 +61,7 @@ const categories = [
         ]
     },
     {
-        Other: [ 
+        Health: [ 
             {displayTitle: 'Alcohol-cocktail', url: '&health=alcohol-cocktail'},
             {displayTitle: 'Alcohol-free', url: '&health=alcohol-free'},
             {displayTitle: 'Celery-free', url: '&health=celery-free'},

@@ -77,7 +77,7 @@ function App() {
         <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
         <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
-        <Route path="/advanced-search" element={<AdvancedSearchPage/>}/>
+        <Route path="/advanced-search" element={<AdvancedSearchPage categories={categories} fetchRecipes={fetchRecipes}/>}/>
       </Routes>
     </BrowserRouter>
   );

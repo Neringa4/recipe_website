@@ -4,7 +4,7 @@
   padding-bottom: 70px;
 }
   
-.load-more {
+.button {
   background-color: #61677A;
   color: white;
   padding: 8px 16px;
@@ -13,7 +13,7 @@
   font-size: 16px;
 }
 
-.load-more:hover {
+.button:hover {
   background-color: #ddd;
   color: black;
   cursor: pointer;
