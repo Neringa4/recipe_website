@@ -10,6 +10,7 @@
 
 .adv-srch-cat-container hr {
     opacity: 30%;
+    z-index: 0;
 }
 
 .adv-srch-form > input {
