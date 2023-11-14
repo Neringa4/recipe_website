@@ -25,3 +25,7 @@
     border: none;
     border-radius: 3px;
 }
+
+.label:hover, .selected-label:hover {
+    cursor: pointer;
+}

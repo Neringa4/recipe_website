@@ -9,7 +9,11 @@ const AdvancedSearchCategory = ({category, allSelectedLabels, setAllSelectedLabe
     const handleLabelClick = (e) => {
         e.preventDefault();
         if (['Meals', 'Dishes', 'Cuisine'].includes(name)) {
-            setSelectedLabels(e.target.value)
+            if (selectedLabels.includes(e.target.value)) {
+                setSelectedLabels([])
+            } else {
+                setSelectedLabels(e.target.value)
+            }
         } else {
             if (selectedLabels.includes(e.target.value)) {
                 const labelsCopy = [...selectedLabels];
