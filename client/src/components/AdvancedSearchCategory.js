@@ -32,12 +32,12 @@ const AdvancedSearchCategory = ({category, allSelectedLabels, setAllSelectedLabe
 
     useEffect(() => {
         const newLabels = {...allSelectedLabels}
-        newLabels[`${name}`] = selectedLabels
+        newLabels[name] = selectedLabels
         setAllSelectedLabels(newLabels)
     }, [selectedLabels])
 
     
-    const labels = category[`${name}`].map((label, index) => {
+    const labels = category[name].map((label, index) => {
         return(
             <button key={index} className={selectedLabels.includes(label.url) ? "selected-label" : "label"} value={label.url} onClick={handleLabelClick}>{label.displayTitle}</button>
         )
