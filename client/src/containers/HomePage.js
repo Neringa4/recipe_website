@@ -1,10 +1,12 @@
 import MostPopularRecipeCard from "../components/MostPopularRecipeCard";
 import RecipeCardsList from "../components/RecipeCardsList";
 
-const MainPage = () => {
+const MainPage = ({mostPopularRecipes}) => {
+
     return(
-        <>
-        </>
+        <div>
+            {mostPopularRecipes[0].recipe.label}
+        </div>
     )
 }
 
