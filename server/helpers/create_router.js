@@ -18,10 +18,9 @@ const createRouter = function (collection) {
     });
 
     router.get('/:id', (req, res) => {
+        const recipe_id = req.params.id;
         collection
-        .findOne(
-            {recipe_id: req.params.id}
-        )
+        .findOne({recipe_id: recipe_id})
         .then(result => res.json(result))
         .catch(err => {
             console.error(err);
