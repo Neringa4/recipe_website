@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom';
 
 const CategoryDropdown = ({category, name, fetchRecipes, selectCategory}) => {
 
-    console.log(category);
-    
     const dishes = ['Desserts', 'Drinks', 'Main Course', 'Salad', 'Sandwitches', 'Soup', 'Starter']
     const cuisine = ['Chinese', 'French', 'Indian', 'Italian', 'Japanese', 'Mexican']
     const health = ['Dairy-free', 'Gluten-free', 'High-fibre', 'High-protein', 'Low-fat', 'Low-sodium', 'Low-sugar']
