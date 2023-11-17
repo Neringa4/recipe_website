@@ -17,3 +17,7 @@
     display: block;
     margin: 60px auto;
 }
+
+.search-btn {
+    background-color: #ddd;
+}

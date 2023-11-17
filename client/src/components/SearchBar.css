@@ -1,7 +1,6 @@
 .search-bar {
     display: flex;
     align-items: center;
-    transition: (-50%,-50%);
 }
 
 .search-bar:hover > input {
@@ -13,7 +12,7 @@
     cursor: pointer;
 }
 
-.search-bar input {
+.search-input {
     line-height: 1.5em;
     color: #171717;
     outline: transparent;

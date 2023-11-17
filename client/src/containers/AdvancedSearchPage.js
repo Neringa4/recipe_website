@@ -5,15 +5,21 @@ import { useNavigate } from 'react-router-dom';
 
 const AdvancedSearchPage = ({categories, fetchRecipes}) => {
 
+    const [searchInput, setSearchInput] = useState('');
+    const [inputList, setInputList] = useState([]);
     const [allSelectedLabels, setAllSelectedLabels] = useState({
         Meals: [],
         Dishes: [],
         Cuisine: [],
         Diet: [],
         Health: []
-    })
+    });
 
     const navigate = useNavigate();
+
+    const handleSearchInput = (e) => {
+        setSearchInput(e.target.value)
+    }
 
     const handleAdvancedSearchSubmit = (e) => {
         e.preventDefault();
@@ -29,11 +35,15 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
                 <hr/>
             </li>
         )
-    })
+    });
 
     return(
         <div className="page" id="adv-srch-page">
             <form className="adv-srch-form" onSubmit={handleAdvancedSearchSubmit}>
+                <div className="search-bar home-bar">
+                    <input type="search" name="search" className="search-input adv-input" pattern=".*\S.*" autoComplete="off" value={searchInput} onChange={handleSearchInput}/>
+                    <button className="search-btn" ><i className="fa fa-search"></i></button>
+                </div>
                 <ul className="adv-srch-cat-container">
                     {searchCategories}
                 </ul>
