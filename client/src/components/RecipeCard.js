@@ -2,7 +2,6 @@ import './RecipeCard.css';
 import {Link} from 'react-router-dom';
 
 const RecipeCard = ({recipe, selectRecipe}) => {
-
     const recipeId = recipe.uri.match(/recipe_[a-z0-9]+/i)[0]
 
     const handleRecipeClick = () => {
@@ -24,7 +23,8 @@ const RecipeCard = ({recipe, selectRecipe}) => {
                     headers: { 'Content-Type': 'application/json'}
                 })
             } else {
-                const recipeCopy = JSON.parse(JSON.stringify(recipe));
+                const recipeCopy = {}
+                recipeCopy.recipe = JSON.parse(JSON.stringify(recipe));
                 recipeCopy.recipe_id = recipeId;
                 recipeCopy.clicks = 1;
                 fetch(baseUrl, {

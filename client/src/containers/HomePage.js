@@ -2,7 +2,7 @@ import RecipeDetailsCard from "../components/RecipeDetailsCard";
 import RecipeCardsList from "../components/RecipeCardsList";
 import './HomePage.css';
 
-const MainPage = ({mostPopularRecipes}) => {
+const MainPage = ({mostPopularRecipes, selectRecipe}) => {
 
     const mostPopularRecipesSorted = JSON.parse(JSON.stringify(mostPopularRecipes)).sort((a, b) => {
             const x = a.clicks; 
@@ -14,7 +14,10 @@ const MainPage = ({mostPopularRecipes}) => {
     return(
         <div className="page">
             <div className="most-pop-container">
-                {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0]}/>}
+                {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0].recipe} home={true}/>}
+            </div>
+            <div className="runner-up-container">
+                {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipesSorted.slice(1, 13)} selectRecipe={selectRecipe}/>}
             </div>
         </div>
     )

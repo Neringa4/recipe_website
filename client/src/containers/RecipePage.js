@@ -5,7 +5,7 @@ const RecipePage = ({recipe}) => {
     return(
         <div className="page">
             <div className="recipe-details-container">
-                <RecipeDetailsCard recipe={recipe}/>
+                <RecipeDetailsCard recipe={recipe} home={false}/>
             </div>
         </div>
     )

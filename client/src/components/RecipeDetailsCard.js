@@ -1,6 +1,6 @@
 import './RecipeDetailsCard.css';
 
-const RecipeDetailsCard = ({recipe}) => {
+const RecipeDetailsCard = ({recipe, home}) => {
     const s = {...recipe.totalNutrients}
 
     let nutrition = {
@@ -54,12 +54,14 @@ const RecipeDetailsCard = ({recipe}) => {
             <div className="recipe-details">
                 <h2>{recipe.label}</h2>
                 <p>Full Recipe: <a href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>
+                {home && <p>{recipe.ingredients.length} Ingredients</p>}
                 {recipe.totalTime > 0 && <p>Time: {recipe.totalTime} mins</p>}
                 <p>Servings: {recipe.yield}</p>
                 <div>
                     <ul className="nutrition-container">{nutritionLabels}</ul>
                 </div>
             </div>
+            {!home && <>
             <div className="ingredient-container">
                 <h2>{recipe.ingredients.length} Ingredients</h2>
                 <ul>{ingredients}</ul>
@@ -71,6 +73,7 @@ const RecipeDetailsCard = ({recipe}) => {
                 </div>
                 <ul className="health-labels">{healthLabels}</ul>
             </div>
+            </>}
         </section>
     )
 }

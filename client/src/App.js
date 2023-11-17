@@ -80,7 +80,7 @@ function App() {
     <BrowserRouter>
       <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
       <Routes>
-        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes}/>}/>
+        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes} selectRecipe={selectRecipe}/>}/>
         <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
         <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
