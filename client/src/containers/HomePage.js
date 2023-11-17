@@ -1,5 +1,6 @@
-import MostPopularRecipeCard from "../components/MostPopularRecipeCard";
+import RecipeDetailsCard from "../components/RecipeDetailsCard";
 import RecipeCardsList from "../components/RecipeCardsList";
+import './HomePage.css';
 
 const MainPage = ({mostPopularRecipes}) => {
 
@@ -11,8 +12,10 @@ const MainPage = ({mostPopularRecipes}) => {
     )
 
     return(
-        <div>
-            {mostPopularRecipes.length > 0 && mostPopularRecipesSorted[0].label}
+        <div className="page">
+            <div className="most-pop-container">
+                {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0]}/>}
+            </div>
         </div>
     )
 }

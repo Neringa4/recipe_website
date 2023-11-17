@@ -22,9 +22,9 @@ const RecipeDetailsCard = ({recipe}) => {
         }
     }
 
-    const nutritionLabels = Object.values(nutrition).map(nutrient => {
+    const nutritionLabels = Object.values(nutrition).map((nutrient, index) => {
         return(
-            <li>
+            <li key={index}>
                 <p>{nutrient.label}</p>
                 <p>{nutrient.quantity/recipe.yield > 1 ? 
                         Math.round(nutrient.quantity/recipe.yield) : 
@@ -35,16 +35,16 @@ const RecipeDetailsCard = ({recipe}) => {
         )
     })
 
-    const ingredients = recipe.ingredientLines.map((line) => {
+    const ingredients = recipe.ingredientLines.map((line, index) => {
         const ingredient = line.replace(/^\* /, '')
         return(
-            <li className="ingredient">{ingredient}</li>
+            <li className="ingredient" key={index}>{ingredient}</li>
         )
     })
         
-    const healthLabels = recipe.healthLabels.map((label) => {
+    const healthLabels = recipe.healthLabels.map((label, index) => {
         return(
-            <li className="health-label">{label}</li>
+            <li className="health-label" key={index}>{label}</li>
         )
     })
 
