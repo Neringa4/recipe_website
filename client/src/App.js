@@ -11,33 +11,6 @@ import categories from './categories.js';
 import {app_key, app_id} from './keys.js';
 
 function App() {
-  // const [categories, setCategories] = useState([
-  //   {Meals: []},
-  //   {Dishes: []},
-  //   {Cuisines: []},
-  //   {Diet: []},
-  //   {Health: []}
-  // ]);
-  
-  // useEffect(() => {
-  //   fetch("https://api.edamam.com/doc/open-api/recipe-search-v2.json")
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     const newData = [10, 11, 9, 7, 8].map((i) => {
-  //       const types = data.paths["/api/recipes/v2"].get.parameters[i].items.enum
-  //       const title = data.paths["/api/recipes/v2"].get.parameters[i].name
-  //       return({[title]: types})
-  //     })
-  //     setCategories(categories.map((cat, index) => {
-  //       const catKey = Object.keys(categories[index])[0]
-  //       const urlKey = Object.keys(newData[index])[0]
-  //       cat[catKey] = newData[index][urlKey].map(type => {
-  //         return({displayTitle: type, url: `&${urlKey}=${type}`})
-  //       })
-  //       return(cat)
-  //     }))
-  //   })
-  // }, [])
 
   const [recipes, setRecipes] = useState({
     from: 0,
@@ -62,12 +35,37 @@ function App() {
     }
   }
 
-  const selectCategory = (category) => {
-    setSelectedCategory(category);
-  }
-
-  const selectRecipe = (recipe) => {
+  const handleRecipeClick = (recipe) => {
+    const recipeId = recipe.uri.match(/recipe_[a-z0-9]+/i)[0]
+    const baseUrl = 'http://localhost:9000/api/recipes/'
+  
     setSelectedRecipe(recipe);
+    
+    fetch(baseUrl + recipeId)
+    .then(res => res.json())
+    .then(data => {
+      if (data) {
+        console.log(data);
+        const recipe = JSON.parse(JSON.stringify(data));
+        recipe.clicks += 1;
+        delete recipe._id
+        fetch(baseUrl + recipeId, {
+          method: 'PUT',
+          body: JSON.stringify(recipe),
+          headers: { 'Content-Type': 'application/json'}
+        })
+      } else {
+        const recipeCopy = {}
+        recipeCopy.recipe = JSON.parse(JSON.stringify(recipe));
+        recipeCopy.recipe_id = recipeId;
+        recipeCopy.clicks = 1;
+        fetch(baseUrl, {
+          method: 'POST',
+          body: JSON.stringify(recipeCopy),
+          headers: { 'Content-Type': 'application/json'}
+        });
+      }
+    })
   }
 
   useEffect(() => {
@@ -78,12 +76,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
+      <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={setSelectedCategory}/>
       <Routes>
-        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes} selectRecipe={selectRecipe}/>}/>
+        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes} handleRecipeClick={handleRecipeClick}/>}/>
         <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
-        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
-        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} selectRecipe={selectRecipe}/>}/>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick}/>}/>
         <Route path="/advanced-search" element={<AdvancedSearchPage categories={categories} fetchRecipes={fetchRecipes}/>}/>
       </Routes>
     </BrowserRouter>

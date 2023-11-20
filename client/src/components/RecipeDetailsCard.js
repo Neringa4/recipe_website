@@ -1,6 +1,7 @@
 import './RecipeDetailsCard.css';
+import {Link} from 'react-router-dom';
 
-const RecipeDetailsCard = ({recipe, home}) => {
+const RecipeDetailsCard = ({recipe, home, handleRecipeClick}) => {
     const s = {...recipe.totalNutrients}
 
     let nutrition = {
@@ -50,9 +51,13 @@ const RecipeDetailsCard = ({recipe, home}) => {
 
     return(
         <section className="recipe-details-card">
-            <img src={'LARGE' in recipe.images ? recipe.images.LARGE.url : recipe.images.REGULAR.url} alt={recipe.label}></img>
+            {home ? 
+            <Link to={`/recipes/${recipe.label}`}><img src={recipe.images.REGULAR.url} alt={recipe.label} onClick={() => handleRecipeClick(recipe)}></img></Link> :
+            <img src={'LARGE' in recipe.images ? recipe.images.LARGE.url : recipe.images.REGULAR.url} alt={recipe.label}></img>}
             <div className="recipe-details">
-                <h2>{recipe.label}</h2>
+                {home ? 
+                <Link to={`/recipes/${recipe.label}`}><h2 onClick={() => handleRecipeClick(recipe)}>{recipe.label}</h2></Link> :
+                <h2>{recipe.label}</h2>}
                 <p>Full Recipe: <a href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>
                 {home && <p>{recipe.ingredients.length} Ingredients</p>}
                 {recipe.totalTime > 0 && <p>Time: {recipe.totalTime} mins</p>}

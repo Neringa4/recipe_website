@@ -1,8 +1,9 @@
 import RecipeDetailsCard from "../components/RecipeDetailsCard";
 import RecipeCardsList from "../components/RecipeCardsList";
 import './HomePage.css';
+import {Link} from 'react-router-dom';
 
-const MainPage = ({mostPopularRecipes, selectRecipe}) => {
+const MainPage = ({mostPopularRecipes, handleRecipeClick}) => {
 
     const mostPopularRecipesSorted = JSON.parse(JSON.stringify(mostPopularRecipes)).sort((a, b) => {
             const x = a.clicks; 
@@ -15,11 +16,11 @@ const MainPage = ({mostPopularRecipes, selectRecipe}) => {
         <div className="page">
             <div className="home-container">
                 <div className="most-pop-container">
-                    {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0].recipe} home={true}/>}
+                    {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0].recipe} home={true} handleRecipeClick={handleRecipeClick}/>}
                 </div>
                 <h2>Popular Recipes</h2>
                 <div className="runner-up-container">
-                    {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipesSorted.slice(1, 13)} selectRecipe={selectRecipe}/>}
+                    {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipesSorted.slice(1, 13)} handleRecipeClick={handleRecipeClick}/>}
                 </div>
             </div>
         </div>
