@@ -8,7 +8,7 @@
     width: 975px;
 }
 
-.adv-srch-cat-container hr {
+.adv-srch-form hr {
     opacity: 30%;
     z-index: 0;
 }
@@ -20,4 +20,17 @@
 
 .search-btn {
     background-color: #ddd;
+}
+
+.home-bar {
+    margin-bottom: 25px;
+    justify-content: left;
+}
+
+.home-bar:hover > input {
+    width: 300px;
+}
+
+.search-input-label {
+    margin-bottom: 25px;
 }

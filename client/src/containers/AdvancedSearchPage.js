@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const AdvancedSearchPage = ({categories, fetchRecipes}) => {
 
     const [searchInput, setSearchInput] = useState('');
-    const [inputList, setInputList] = useState([]);
+    const [searchBar, setSearchBar] = useState(true);
     const [allSelectedLabels, setAllSelectedLabels] = useState({
         Meals: [],
         Dishes: [],
@@ -23,9 +23,13 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
 
     const handleAdvancedSearchSubmit = (e) => {
         e.preventDefault();
-        const urlExt = Object.values(allSelectedLabels).flat().join('')
+        const urlExt = Object.values(allSelectedLabels).flat().join('') + `&q=${searchInput}`
         fetchRecipes(urlExt, '')
         navigate(`/search/advanced-search`)
+    }
+
+    const handleSearchClick = () => {
+        setSearchBar(false)
     }
 
     const searchCategories = categories.map((category, index) => {
@@ -40,10 +44,14 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
     return(
         <div className="page" id="adv-srch-page">
             <form className="adv-srch-form" onSubmit={handleAdvancedSearchSubmit}>
+                <h2 className="category-name">Search Term</h2>
+                {searchBar ? 
                 <div className="search-bar home-bar">
                     <input type="search" name="search" className="search-input adv-input" pattern=".*\S.*" autoComplete="off" value={searchInput} onChange={handleSearchInput}/>
-                    <button className="search-btn" ><i className="fa fa-search"></i></button>
-                </div>
+                    <button className="search-btn" onClick={handleSearchClick}><i className="fa fa-search"></i></button>
+                </div> :
+                <button className="selected-label search-input-label" onClick={() => setSearchBar(true)}>{searchInput}</button>}
+                <hr/>
                 <ul className="adv-srch-cat-container">
                     {searchCategories}
                 </ul>
