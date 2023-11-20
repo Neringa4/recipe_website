@@ -41,6 +41,7 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
         <div className="page">
             <form className="adv-srch-form" onSubmit={handleAdvancedSearchSubmit}>
                 <h1 className="page-title">Advanced Search</h1>
+                <hr/>
                 <h2 className="category-name">Search Term</h2>
                 {searchBar ? 
                 <div className="search-bar home-bar">

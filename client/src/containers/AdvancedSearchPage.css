@@ -17,6 +17,11 @@
     margin: 60px auto;
 }
 
+.adv-input {
+    width: 300px;
+    padding-left: 15px;
+}
+
 .search-btn {
     background-color: #ddd;
 }
