@@ -1,7 +1,7 @@
 .recipe-card {
     width: 225px;
     min-height: 335px;
-    box-shadow: 0px 3px 5px -4px #ccc;
+    box-shadow: 0px 4px 10px -5px #c5c5c5;
     border-radius: 4px;
     background-color: white;
 }
