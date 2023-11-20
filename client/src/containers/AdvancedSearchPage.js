@@ -28,10 +28,6 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
         navigate(`/search/advanced-search`)
     }
 
-    const handleSearchClick = () => {
-        setSearchBar(false)
-    }
-
     const searchCategories = categories.map((category, index) => {
         return(
             <li key={index}>
@@ -48,7 +44,7 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
                 {searchBar ? 
                 <div className="search-bar home-bar">
                     <input type="search" name="search" className="search-input adv-input" pattern=".*\S.*" autoComplete="off" value={searchInput} onChange={handleSearchInput}/>
-                    <button className="search-btn" onClick={handleSearchClick}><i className="fa fa-search"></i></button>
+                    <button className="search-btn" onClick={() => {setSearchBar(false)}}><i className="fa fa-search"></i></button>
                 </div> :
                 <button className="selected-label search-input-label" onClick={() => setSearchBar(true)}>{searchInput}</button>}
                 <hr/>
