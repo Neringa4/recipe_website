@@ -45,7 +45,10 @@ const AdvancedSearchCategory = ({category, allSelectedLabels, setAllSelectedLabe
 
     return(
         <>
-            <h2 className="category-name">{name}</h2>
+            <div className='category-name-container'>
+                <h2 className="category-name">{name}</h2>
+                {['Diet', 'Health'].includes(name) ? <p>&#40;You may select multiple categories&#41;</p> : <p>&#40;Select up to one category&#41;</p>}
+            </div>
             <div className="label-container">
                 {labels}
             </div>

@@ -6,3 +6,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.page {
+    background-color: whitesmoke;
+    min-height: 920px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-title {
+    text-align: center;
+    margin: 50px 0;
+}

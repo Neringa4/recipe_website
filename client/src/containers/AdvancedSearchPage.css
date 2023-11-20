@@ -1,11 +1,10 @@
-#adv-srch-page {
-    display: flex;
-    justify-content: center;
-}
-
 .adv-srch-cat-container {
     list-style: none;
     width: 975px;
+}
+
+.adv-srch-form > .page-title {
+    margin: 30px 0;
 }
 
 .adv-srch-form hr {

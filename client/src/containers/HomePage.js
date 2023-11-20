@@ -13,11 +13,13 @@ const MainPage = ({mostPopularRecipes, selectRecipe}) => {
 
     return(
         <div className="page">
-            <div className="most-pop-container">
-                {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0].recipe} home={true}/>}
-            </div>
-            <div className="runner-up-container">
-                {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipesSorted.slice(1, 13)} selectRecipe={selectRecipe}/>}
+            <div>
+                <div className="most-pop-container">
+                    {mostPopularRecipes.length > 0 && <RecipeDetailsCard recipe={mostPopularRecipesSorted[0].recipe} home={true}/>}
+                </div>
+                <div className="runner-up-container">
+                    {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipesSorted.slice(1, 13)} selectRecipe={selectRecipe}/>}
+                </div>
             </div>
         </div>
     )
