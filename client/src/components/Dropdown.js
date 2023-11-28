@@ -2,7 +2,7 @@ import './Dropdown.css';
 import DropdownCategory from './DropdownCategory';
 import {Link} from 'react-router-dom';
 
-const CategoryDropdown = ({category, name, fetchRecipes, selectCategory}) => {
+const CategoryDropdown = ({category, name, fetchRecipes}) => {
 
     const dishes = ['Desserts', 'Drinks', 'Main Course', 'Salad', 'Sandwitches', 'Soup', 'Starter']
     const cuisine = ['Chinese', 'French', 'Indian', 'Italian', 'Japanese', 'Mexican']
@@ -20,7 +20,7 @@ const CategoryDropdown = ({category, name, fetchRecipes, selectCategory}) => {
     const dropdownList = categoryTrim[name].map((value, index) => {
         return(
             <li key={index}>
-                <DropdownCategory category={value} fetchRecipes={fetchRecipes} selectCategory={selectCategory}/>
+                <DropdownCategory category={value} fetchRecipes={fetchRecipes}/>
             </li>
         )
     })

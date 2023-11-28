@@ -5,7 +5,7 @@ import RecipePage from "./containers/RecipePage";
 import CategoryPage from "./containers/CategoryPage";
 import ResultsPage from "./containers/ResultsPage";
 import AdvancedSearchPage from "./containers/AdvancedSearchPage.js";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import categories from './categories.js';
 import {app_key, app_id} from './keys.js';
@@ -75,13 +75,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header categories={categories} fetchRecipes={fetchRecipes} selectCategory={setSelectedCategory}/>
+      <Header categories={categories} fetchRecipes={fetchRecipes}/>
       <Routes>
         <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes} handleRecipeClick={handleRecipeClick}/>}/>
         <Route path="/recipes/:label" element={<RecipePage recipe={selectedRecipe}/>}/>
-        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick}/>}/>
-        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick}/>}/>
+        <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} fetchRecipes={fetchRecipes} handleRecipeClick={handleRecipeClick}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick} fetchRecipes={fetchRecipes}/>}/>
         <Route path="/advanced-search" element={<AdvancedSearchPage categories={categories} fetchRecipes={fetchRecipes}/>}/>
+        <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
     </BrowserRouter>
   );

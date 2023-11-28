@@ -1,15 +1,10 @@
 import './DropdownCategory.css';
 import {Link} from 'react-router-dom';
 
-const DropdownCategory = ({category, fetchRecipes, selectCategory}) => {
-
-    const handleOnClick = () => {
-        selectCategory(category.displayTitle);
-        fetchRecipes(category.url, '');
-    }
+const DropdownCategory = ({category}) => {
     return(
-        <Link to={`/categories/${category.displayTitle}`} className="dropdown-link">
-            <p onClick={handleOnClick}>
+        <Link to={`/categories/${category.url}`} className="dropdown-link" state={{displayTitle: category.displayTitle, url: category.url}}>
+            <p >
                 {category.displayTitle}
             </p>
         </Link>

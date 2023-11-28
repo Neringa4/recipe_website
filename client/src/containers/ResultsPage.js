@@ -1,8 +1,16 @@
 import RecipeCardsList from "../components/RecipeCardsList";
 import PageButtons from "../components/PageButtons";
 import './ResultsPage.css';
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const ResultsPage = ({recipes, setRecipes, handleRecipeClick}) => {
+const ResultsPage = ({recipes, setRecipes, fetchRecipes, handleRecipeClick}) => {
+    const searchTerm = useParams();
+
+    useEffect(() => {
+        fetchRecipes(searchTerm.input, '');
+    }, [searchTerm.input])
+
     return(
         <div className="page">
             <div>

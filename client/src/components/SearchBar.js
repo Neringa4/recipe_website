@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 import {useState} from 'react';
 
-const SearchBar = ({fetchRecipes}) => {
+const SearchBar = () => {
 
     const [searchInput, setSearchInput] = useState('')
 
@@ -16,8 +16,7 @@ const SearchBar = ({fetchRecipes}) => {
         e.preventDefault();
         if (searchInput) {
             const urlExt = `&q=${searchInput}`;
-            fetchRecipes(urlExt, '');
-            navigate(`/search/${searchInput}`)
+            navigate(`/search/${urlExt}`)
             setSearchInput('')
         }
     }
