@@ -45,13 +45,12 @@ function App() {
     .then(res => res.json())
     .then(data => {
       if (data) {
-        console.log(data);
-        const recipe = JSON.parse(JSON.stringify(data));
-        recipe.clicks += 1;
-        delete recipe._id
+        const recipeUpdated = JSON.parse(JSON.stringify(data));
+        recipeUpdated.clicks += 1;
+        delete recipeUpdated._id
         fetch(baseUrl + recipeId, {
           method: 'PUT',
-          body: JSON.stringify(recipe),
+          body: JSON.stringify(recipeUpdated),
           headers: { 'Content-Type': 'application/json'}
         })
       } else {

@@ -25,9 +25,9 @@ const RecipeDetailsCard = ({recipe, home, handleRecipeClick}) => {
 
     const nutritionLabels = Object.values(nutrition).map((nutrient, index) => {
         return(
-            <li key={index}>
+            <li key={index} className="nutrition-label">
                 <p>{nutrient.label}</p>
-                <p>{nutrient.quantity/recipe.yield > 1 ? 
+                <p className="nutrient-quantity">{nutrient.quantity/recipe.yield > 1 ? 
                         Math.round(nutrient.quantity/recipe.yield) : 
                         (nutrient.quantity/recipe.yield).toFixed(2)} 
                     {nutrient.unit}
@@ -39,46 +39,54 @@ const RecipeDetailsCard = ({recipe, home, handleRecipeClick}) => {
     const ingredients = recipe.ingredientLines.map((line, index) => {
         const ingredient = line.replace(/^\* /, '')
         return(
-            <li className="ingredient" key={index}>{ingredient}</li>
+            <li className="ingredient" key={index}>- {ingredient}</li>
         )
     })
         
     const healthLabels = recipe.healthLabels.map((label, index) => {
         return(
-            <li className="health-label" key={index}>{label}</li>
+            <li className="health-label" key={index}>{label} <i className="fa-solid fa-check"></i></li>
         )
     })
 
     return(
         <section className="recipe-details-card">
             {home ? 
-            <Link to={`/recipes/${recipe.label}`}><img src={recipe.images.REGULAR.url} alt={recipe.label} onClick={() => handleRecipeClick(recipe)}></img></Link> :
-            <img src={'LARGE' in recipe.images ? recipe.images.LARGE.url : recipe.images.REGULAR.url} alt={recipe.label}></img>}
+                <Link to={`/recipes/${recipe.label}`} className="image-link">
+                <svg className="top-shape">
+                    <polygon points="50 0, 50 60, 25 40, 0 60, 0 0"/>
+                </svg>
+                <p className="top">TOP</p>
+                    <img src={recipe.images.REGULAR.url} alt={recipe.label} onClick={() => handleRecipeClick(recipe)}></img>
+                </Link> :
+                <img src={recipe.images.REGULAR.url} alt={recipe.label}></img>
+            }
             <div className="recipe-details">
                 {home ? 
-                <Link to={`/recipes/${recipe.label}`}><h2 onClick={() => handleRecipeClick(recipe)}>{recipe.label}</h2></Link> :
-                <h2>{recipe.label}</h2>}
-                <p>Full Recipe: <a href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>
-                {home && <p>{recipe.ingredients.length} Ingredients</p>}
-                {recipe.totalTime > 0 && <p>Time: {recipe.totalTime} mins</p>}
-                <p>Servings: {recipe.yield}</p>
-                <div>
-                    <ul className="nutrition-container">{nutritionLabels}</ul>
+                    <Link to={`/recipes/${recipe.label}`}><h2 onClick={() => handleRecipeClick(recipe)}>{recipe.label}</h2></Link> :
+                    <h2>{recipe.label}</h2>
+                }
+                <p className="full-recipe-link">Full Recipe: <a className="recipe-source-link" href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>
+                <p><i className="fa fa-basket-shopping"></i> {recipe.ingredients.length} {recipe.ingredients.length > 1 ? "Ingredients" : "Ingredient"}</p>
+                {recipe.totalTime > 0 && <p><i className="fa fa-clock"></i> Time: {recipe.totalTime} mins</p>}
+                <p><i className="fa fa-utensils"></i> {recipe.yield} {recipe.yield > 1 ? "Servings" : "Serving"}</p>
+                <ul className="nutrition-container">{nutritionLabels}</ul>
+            </div>
+            {!home && 
+                <>
+                <div className="ingredient-container">
+                    <h2>Ingredients</h2>
+                    <ul>{ingredients}</ul>
                 </div>
-            </div>
-            {!home && <>
-            <div className="ingredient-container">
-                <h2>{recipe.ingredients.length} Ingredients</h2>
-                <ul>{ingredients}</ul>
-            </div>
-            <div className="label-method-container">
-                <div>
-                    <h2>Method</h2>
-                    <p>Full recipe can be found at <a href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>
+                <div className="label-method-container">
+                    <div>
+                        <h2>Method</h2>
+                        <p>Full recipe can be found at <a className="recipe-source-link" href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a>.</p>
+                    </div>
+                    <ul className="health-labels">{healthLabels}</ul>
                 </div>
-                <ul className="health-labels">{healthLabels}</ul>
-            </div>
-            </>}
+                </>
+            }
         </section>
     )
 }
