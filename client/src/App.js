@@ -21,6 +21,13 @@ function App() {
   });
   const [mostPopularRecipes, setMostPopularRecipes] = useState([]);
 
+  const mostPopularRecipesSorted = JSON.parse(JSON.stringify(mostPopularRecipes)).sort((a, b) => {
+    const x = a.clicks; 
+    const y = b.clicks;
+    return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+}
+)
+
   const fetchRecipes = (urlExt, url) => {
     if (url) {
       fetch(url)
@@ -54,10 +61,10 @@ function App() {
     <>
       <Header categories={categories} fetchRecipes={fetchRecipes}/>
       <Routes>
-        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipes} handleRecipeClick={handleRecipeClick}/>}/>
+        <Route path="/" element={<HomePage mostPopularRecipes={mostPopularRecipesSorted} handleRecipeClick={handleRecipeClick}/>}/>
         <Route path="/recipes/:recipeId" element={<RecipePage/>}/>
         <Route path="/categories/:displayTitle" element={<CategoryPage recipes={recipes} setRecipes={setRecipes} fetchRecipes={fetchRecipes} handleRecipeClick={handleRecipeClick}/>}/>
-        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick} fetchRecipes={fetchRecipes}/>}/>
+        <Route path="/search/:input" element={<ResultsPage recipes={recipes} setRecipes={setRecipes} handleRecipeClick={handleRecipeClick} fetchRecipes={fetchRecipes} mostPopularRecipes={mostPopularRecipesSorted}/>}/>
         <Route path="/advanced-search" element={<AdvancedSearchPage categories={categories} fetchRecipes={fetchRecipes}/>}/>
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>

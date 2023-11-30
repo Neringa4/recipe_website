@@ -1,0 +1,28 @@
+.results-page {
+    width: 975px;
+}
+
+.results-page .health-labels {
+    margin: -20px 0px 30px 0px;
+    justify-content: center;
+}
+
+.popular-recipes-container h2 {
+    text-align: center;
+    margin: 30px;
+}
+
+.no-results-container > h2 {
+    margin: 20px 0px;
+}
+
+.search-suggestions {
+    margin: 20px;
+    margin-bottom: 40px;
+    
+    & ul {
+        margin-left: 20px;
+        margin-top: 5px;
+        list-style: circle;
+    }
+}
