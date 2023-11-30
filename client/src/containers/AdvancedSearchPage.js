@@ -3,10 +3,11 @@ import './AdvancedSearchPage.css';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AdvancedSearchPage = ({categories, fetchRecipes}) => {
+const AdvancedSearchPage = ({categories}) => {
 
     const [searchInput, setSearchInput] = useState('');
     const [searchBar, setSearchBar] = useState(true);
+    const [alert, setAlert] = useState();
     const [allSelectedLabels, setAllSelectedLabels] = useState({
         Meals: [],
         Dishes: [],
@@ -23,8 +24,14 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
 
     const handleAdvancedSearchSubmit = (e) => {
         e.preventDefault();
-        const urlExt = Object.values(allSelectedLabels).flat().join('') + `&q=${searchInput}`
-        navigate(`/search/${urlExt}`)
+        const urlExt = Object.values(allSelectedLabels).flat().join('') + `&q=${searchInput}`;
+        if (urlExt.length > 3) {
+            navigate(`/search/${urlExt}`);
+            setAlert(false);
+        } else {
+            document.documentElement.scrollTop = 0
+            setAlert(true);
+        }
     }
 
     const searchCategories = categories.map((category, index) => {
@@ -38,6 +45,11 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
 
     return(
         <div className="page">
+            <div className={alert ? "filter-alert show" : "filter-alert"}>
+                <i className="fa fa-exclamation-circle"></i>
+                <p>Please select at least one filter!</p>
+                <button className="close-button" onClick={() => setAlert(false)}><i className="fa fa-xmark"></i></button>
+            </div>
             <form className="adv-srch-form" onSubmit={handleAdvancedSearchSubmit}>
                 <h1 className="page-title">Advanced Search</h1>
                 <hr/>
