@@ -43,11 +43,13 @@ const createRouter = function (collection) {
 
     router.put('/:id', (req, res) => {
         const recipe_id = req.params.id
-        const updatedData = req.body;
         collection
         .updateOne(
             {recipe_id: recipe_id},
-            {$set: updatedData},
+            {
+                $set: {recipe: req.body},
+                $inc: {clicks: 1}
+            },
             {upsert: true}
         )
         .then(result => res.json(result))

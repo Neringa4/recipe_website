@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 const DropdownCategory = ({category}) => {
     return(
-        <Link to={`/categories/${category.url}`} className="dropdown-link" state={{displayTitle: category.displayTitle, url: category.url}}>
+        <Link to={`/categories/${category.url}`} className="dropdown-link">
             <p >
                 {category.displayTitle}
             </p>

@@ -2,6 +2,7 @@ import './RecipeDetailsCard.css';
 import {Link} from 'react-router-dom';
 
 const RecipeDetailsCard = ({recipe, home, handleRecipeClick}) => {
+    const recipeId = recipe.uri.match(/(?<=recipe_).*/)[0]
     const s = {...recipe.totalNutrients}
 
     let nutrition = {
@@ -52,18 +53,18 @@ const RecipeDetailsCard = ({recipe, home, handleRecipeClick}) => {
     return(
         <section className="recipe-details-card">
             {home ? 
-                <Link to={`/recipes/${recipe.label}`} className="image-link">
+                <Link to={`/recipes/${recipeId}`} className="image-link">
                 <svg className="top-shape">
                     <polygon points="50 0, 50 60, 25 40, 0 60, 0 0"/>
                 </svg>
                 <p className="top">TOP</p>
-                    <img src={recipe.images.REGULAR.url} alt={recipe.label} onClick={() => handleRecipeClick(recipe)}></img>
+                <img src={recipe.images.REGULAR.url} alt={recipe.label} onClick={() => handleRecipeClick(recipe)}></img>
                 </Link> :
                 <img src={recipe.images.REGULAR.url} alt={recipe.label}></img>
             }
             <div className="recipe-details">
                 {home ? 
-                    <Link to={`/recipes/${recipe.label}`}><h2 onClick={() => handleRecipeClick(recipe)}>{recipe.label}</h2></Link> :
+                    <Link to={`/recipes/${recipeId}`}><h2 onClick={() => handleRecipeClick(recipe)}>{recipe.label}</h2></Link> :
                     <h2>{recipe.label}</h2>
                 }
                 <p className="full-recipe-link">Full Recipe: <a className="recipe-source-link" href={recipe.url} target="_blank" rel="noreferrer">{recipe.source}</a></p>

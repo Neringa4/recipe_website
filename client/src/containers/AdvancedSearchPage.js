@@ -24,8 +24,7 @@ const AdvancedSearchPage = ({categories, fetchRecipes}) => {
     const handleAdvancedSearchSubmit = (e) => {
         e.preventDefault();
         const urlExt = Object.values(allSelectedLabels).flat().join('') + `&q=${searchInput}`
-        fetchRecipes(urlExt, '')
-        navigate(`/search/advanced-search`)
+        navigate(`/search/${urlExt}`)
     }
 
     const searchCategories = categories.map((category, index) => {
