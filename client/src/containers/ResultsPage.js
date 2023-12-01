@@ -48,7 +48,7 @@ const ResultsPage = ({recipes, setRecipes, fetchRecipes, handleRecipeClick, most
                         <div className="popular-recipes-container">
                             <hr/>
                             <h2>Popular Recipes</h2>
-                            {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipes.slice(0, 12)} handleRecipeClick={handleRecipeClick}/>}
+                            {mostPopularRecipes.length > 0 && <RecipeCardsList recipes={mostPopularRecipes.slice(0, 8)} handleRecipeClick={handleRecipeClick}/>}
                         </div>
                     </div>
                 }
