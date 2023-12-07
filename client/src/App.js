@@ -42,7 +42,7 @@ function App() {
 
   const handleRecipeClick = (recipe) => {
     const recipeId = recipe.uri.match(/(?<=recipe_).*/)[0]
-    const baseUrl = 'http://localhost:9000/api/recipes/'
+    const baseUrl = 'http://3.8.151.188:5001/api/recipes/'
     
     fetch(baseUrl + recipeId, {
       method: 'PUT',
@@ -52,7 +52,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:9000/api/recipes/')
+    fetch('http://3.8.151.188:5001/api/recipes/')
     .then(res => res.json())
     .then(data => setMostPopularRecipes(data));
   }, []);
