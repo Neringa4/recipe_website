@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
@@ -7,7 +8,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-MongoClient.connect('mongodb://127.0.0.1:27017')
+MongoClient.connect(process.env.MONGODB_URI)
     .then((client) => {
         const db = client.db('recipe_database');
         const recipesCollection = db.collection('recipes');
@@ -16,6 +17,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017')
     })
     .catch(console.error);
 
-app.listen(9000, function () {
+app.listen(5001, function () {
   console.log(`Listening on port ${ this.address().port }`);
 });
