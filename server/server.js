@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
@@ -17,6 +17,6 @@ MongoClient.connect(process.env.MONGODB_URI)
     })
     .catch(console.error);
 
-app.listen(5001, function () {
+app.listen(process.env.PORT, function () {
   console.log(`Listening on port ${ this.address().port }`);
 });
