@@ -8,7 +8,7 @@ import AdvancedSearchPage from "./containers/AdvancedSearchPage.js";
 import {Routes, Route, Navigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import categories from './categories.js';
-import {app_key, app_id} from './keys.js';
+import {app_key, app_id, recipe_api_url} from './keys.js';
 
 function App() {
 
@@ -42,9 +42,8 @@ function App() {
 
   const handleRecipeClick = (recipe) => {
     const recipeId = recipe.uri.match(/(?<=recipe_).*/)[0]
-    const baseUrl = 'http://3.8.151.188:5001/api/recipes/'
-    
-    fetch(baseUrl + recipeId, {
+
+    fetch(recipe_api_url + recipeId, {
       method: 'PUT',
       body: JSON.stringify(recipe),
       headers: { 'Content-Type': 'application/json'}
@@ -52,7 +51,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://3.8.151.188:5001/api/recipes/')
+    fetch(recipe_api_url)
     .then(res => res.json())
     .then(data => setMostPopularRecipes(data));
   }, []);
