@@ -19,6 +19,7 @@
 .recipe-details-card img {
     height: 300px;
     width: 300px;
+    object-fit: cover;
 }
 
 .recipe-details {

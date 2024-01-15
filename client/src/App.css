@@ -9,7 +9,7 @@ body {
 
 .page {
     background-color: #fafafa;
-    min-height: 920px;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
 }

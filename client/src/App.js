@@ -41,7 +41,7 @@ function App() {
   }
 
   const handleRecipeClick = (recipe) => {
-    const recipeId = recipe.uri.match(/(?<=recipe_).*/)[0]
+    const recipeId = '/' + recipe.uri.match(/(?<=recipe_).*/)[0]
 
     fetch(recipe_api_url + recipeId, {
       method: 'PUT',
