@@ -26,7 +26,7 @@ const ResultsPage = ({recipes, setRecipes, fetchRecipes, handleRecipeClick, most
     return(
         <div className="page">
             <div className="results-page">
-                <h1 className="page-title">Search Results{searchTerm.length > 0 && ` for '${searchTerm}'`}</h1>
+                <h1 className="page-title">Search Results{searchTerm && ` for '${searchTerm}'`}</h1>
                 <ul className="health-labels">
                     {searchLabels && labels}
                 </ul>
